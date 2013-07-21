@@ -60,8 +60,14 @@ Vessel.prototype.getOccupiedSpace = function () {
  */
 Vessel.prototype.flyTo = function (newPosition) {
   
-  if (newPosition.length === 2) {
-    this.position = newPosition;
+  if (newPosition.hasOwnProperty(length)) {
+    
+    if (newPosition.length === 2) {
+      this.position = newPosition;
+    } else {
+      return 'Введите координаты в формате [X, Y]';
+    }
+
   } else if (typeof newPosition === 'object' && typeof newPosition.position !== undefined) {
     this.position = newPosition.position;
   } else {
